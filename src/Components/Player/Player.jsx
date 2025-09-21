@@ -8,6 +8,7 @@ const Player = ({ player }) => {
     playerCountry,
     playingRole,
     battingStyle,
+    bowlingStyle,
     price,
     rating,
   } = player;
@@ -18,7 +19,7 @@ const Player = ({ player }) => {
       </figure>
       <div className="space-y-2">
         <h2 className="card-title">{playerName}</h2>
-        <div className="flex">
+        <div className="flex justify-between">
           <p>{playerCountry}</p>
           <p>{playingRole}</p>
         </div>
@@ -27,7 +28,7 @@ const Player = ({ player }) => {
           <p className="font-bold">Rating {rating}</p>
           <div className="flex justify-between">
             <p>{battingStyle}</p>
-            <p>{battingStyle}</p>
+            <p>{bowlingStyle}</p>
           </div>
           <div className="flex justify-between">
             <p>Price:${price}</p>

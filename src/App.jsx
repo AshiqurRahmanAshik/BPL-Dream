@@ -1,13 +1,12 @@
 import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
-import AvailablePlayers from "./Components/AvailablePlayers/AvailablePlayers";
-import AllPlayersDetails from "./Components/AllPlayersDetails/AllPlayersDetails";
+import Toggle from "./Components/Toggle/Toggle";
 
 function App() {
   return (
     <div>
       <Navbar></Navbar>
-      <AvailablePlayers></AvailablePlayers>
+      <Toggle></Toggle>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import AllPlayersDetails from "../AllPlayersDetails/AllPlayersDetails";
 import { Suspense } from "react";
+import SelectedPlayers from "../SelectedPlayers/SelectedPlayers";
 
 const fetchAllPlayersData = async () => {
   const res = await fetch("./AllPlayers.json");
@@ -9,7 +10,6 @@ const fetchAllPlayersData = async () => {
 
 const AvailablePlayers = () => {
   const allPlayersData = fetchAllPlayersData();
-
   return (
     <div>
       <Suspense
