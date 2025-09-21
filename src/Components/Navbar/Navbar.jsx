@@ -12,7 +12,7 @@ const Navbar = () => {
         <li>Schedules</li>
       </ul>
       <button className="flex items-center justify-center gap-1">
-        <span>0</span>
+        <span>600000</span>
         <span className="flex items-center gap-1">
           Coin <img src={dollarImg} />
         </span>
