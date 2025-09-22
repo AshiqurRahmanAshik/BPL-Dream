@@ -6,12 +6,22 @@ const Toggle = ({ coin, setCoin }) => {
   const [toggle, setToggle] = useState(true);
   const [purchasedPlayer, setPurchasedPlayer] = useState([]);
   const [selectedCount, setSelectedCount] = useState(0);
-  console.log(selectedCount);
+  const removePlayer = (p) => {
+    console.log(p);
+    const filteredData = purchasedPlayer.filter((player) => player.id !== p.id);
+    setPurchasedPlayer(filteredData);
+    setSelectedCount(selectedCount - 1);
+    setCoin(coin - p.price);
+  };
 
   return (
     <div>
       <div className="flex justify-between w-11/12 mx-auto">
-        <p className="text-xl font-bold">Available Players</p>
+        <p className="text-xl font-bold">
+          {toggle
+            ? "Available Players"
+            : `Selected Players(${purchasedPlayer.length}/6)`}
+        </p>
         <div className="space-x-0.5">
           <button
             onClick={() => {
@@ -31,7 +41,7 @@ const Toggle = ({ coin, setCoin }) => {
               toggle === false ? "bg-yellow-200" : ""
             }`}
           >
-            Selected (<span>{selectedCount}</span>)
+            Selected (<span>{selectedCount}/6</span>)
           </button>
         </div>
       </div>
@@ -50,6 +60,7 @@ const Toggle = ({ coin, setCoin }) => {
           setPurchasedPlayer={setPurchasedPlayer}
           selectedCount={selectedCount}
           setSelectedCount={setSelectedCount}
+          removePlayer={removePlayer}
         ></SelectedPlayers>
       )}
     </div>

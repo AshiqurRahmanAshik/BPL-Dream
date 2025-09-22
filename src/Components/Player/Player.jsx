@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AvailablePlayers from "./../AvailablePlayers/AvailablePlayers";
+import { toast } from "react-toastify";
 
 const Player = ({
   player,
@@ -13,7 +14,8 @@ const Player = ({
   // console.log(player);
   const handleCoin = (playerPrice) => {
     if (playerPrice > coin) {
-      alert("Not Enough Coin to Buy player");
+      toast("Not Enough Coin to Buy player");
+      setIsSelected(false);
       return;
     }
     const availablePrice = coin - playerPrice;
@@ -57,6 +59,7 @@ const Player = ({
                 setIsSelected(true);
                 handleCoin(price);
                 setSelectedCount(selectedCount + 1);
+                toast(`${playerName} is Added`);
               }}
               className="btn btn-primary px-2  rounded border"
             >
