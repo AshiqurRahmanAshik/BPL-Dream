@@ -1,7 +1,15 @@
 import React, { use } from "react";
 import Player from "../Player/Player";
 
-const AllPlayersDetails = ({ allPlayersData, coin, setCoin }) => {
+const AllPlayersDetails = ({
+  allPlayersData,
+  coin,
+  setCoin,
+  purchasedPlayer,
+  setPurchasedPlayer,
+  selectedCount,
+  setSelectedCount,
+}) => {
   const players = use(allPlayersData);
 
   return (
@@ -10,8 +18,12 @@ const AllPlayersDetails = ({ allPlayersData, coin, setCoin }) => {
         <Player
           key={player.id}
           player={player}
+          purchasedPlayer={purchasedPlayer}
+          setPurchasedPlayer={setPurchasedPlayer}
           coin={coin}
           setCoin={setCoin}
+          selectedCount={selectedCount}
+          setSelectedCount={setSelectedCount}
         ></Player>
       ))}
     </div>

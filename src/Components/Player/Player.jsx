@@ -1,14 +1,24 @@
 import React, { useState } from "react";
 import AvailablePlayers from "./../AvailablePlayers/AvailablePlayers";
 
-const Player = ({ player, coin, setCoin }) => {
+const Player = ({
+  player,
+  coin,
+  setCoin,
+  purchasedPlayer,
+  setPurchasedPlayer,
+  selectedCount,
+  setSelectedCount,
+}) => {
   // console.log(player);
   const handleCoin = (playerPrice) => {
     if (playerPrice > coin) {
       alert("Not Enough Coin to Buy player");
+      return;
     }
     const availablePrice = coin - playerPrice;
     setCoin(availablePrice);
+    setPurchasedPlayer([...purchasedPlayer, player]);
   };
   const {
     playerImage,
@@ -46,6 +56,7 @@ const Player = ({ player, coin, setCoin }) => {
               onClick={() => {
                 setIsSelected(true);
                 handleCoin(price);
+                setSelectedCount(selectedCount + 1);
               }}
               className="btn btn-primary px-2  rounded border"
             >

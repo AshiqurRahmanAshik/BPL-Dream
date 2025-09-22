@@ -9,7 +9,14 @@ const fetchAllPlayersData = async () => {
 };
 
 const allPlayersData = fetchAllPlayersData();
-const AvailablePlayers = ({ coin, setCoin }) => {
+const AvailablePlayers = ({
+  coin,
+  setCoin,
+  purchasedPlayer,
+  setPurchasedPlayer,
+  selectedCount,
+  setSelectedCount,
+}) => {
   return (
     <div>
       <Suspense
@@ -22,7 +29,11 @@ const AvailablePlayers = ({ coin, setCoin }) => {
         <AllPlayersDetails
           coin={coin}
           setCoin={setCoin}
+          purchasedPlayer={purchasedPlayer}
+          setPurchasedPlayer={setPurchasedPlayer}
           allPlayersData={allPlayersData}
+          selectedCount={selectedCount}
+          setSelectedCount={setSelectedCount}
         ></AllPlayersDetails>
       </Suspense>
     </div>

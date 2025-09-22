@@ -4,6 +4,9 @@ import AvailablePlayers from "./../AvailablePlayers/AvailablePlayers";
 
 const Toggle = ({ coin, setCoin }) => {
   const [toggle, setToggle] = useState(true);
+  const [purchasedPlayer, setPurchasedPlayer] = useState([]);
+  const [selectedCount, setSelectedCount] = useState(0);
+  console.log(selectedCount);
 
   return (
     <div>
@@ -28,14 +31,26 @@ const Toggle = ({ coin, setCoin }) => {
               toggle === false ? "bg-yellow-200" : ""
             }`}
           >
-            Selected (<span>0</span>)
+            Selected (<span>{selectedCount}</span>)
           </button>
         </div>
       </div>
       {toggle === true ? (
-        <AvailablePlayers coin={coin} setCoin={setCoin}></AvailablePlayers>
+        <AvailablePlayers
+          coin={coin}
+          setCoin={setCoin}
+          purchasedPlayer={purchasedPlayer}
+          setPurchasedPlayer={setPurchasedPlayer}
+          selectedCount={selectedCount}
+          setSelectedCount={setSelectedCount}
+        ></AvailablePlayers>
       ) : (
-        <SelectedPlayers></SelectedPlayers>
+        <SelectedPlayers
+          purchasedPlayer={purchasedPlayer}
+          setPurchasedPlayer={setPurchasedPlayer}
+          selectedCount={selectedCount}
+          setSelectedCount={setSelectedCount}
+        ></SelectedPlayers>
       )}
     </div>
   );
