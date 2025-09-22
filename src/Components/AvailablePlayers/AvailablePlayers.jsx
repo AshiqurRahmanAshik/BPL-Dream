@@ -8,8 +8,8 @@ const fetchAllPlayersData = async () => {
   return res.json();
 };
 
-const AvailablePlayers = () => {
-  const allPlayersData = fetchAllPlayersData();
+const allPlayersData = fetchAllPlayersData();
+const AvailablePlayers = ({ coin, setCoin }) => {
   return (
     <div>
       <Suspense
@@ -19,7 +19,11 @@ const AvailablePlayers = () => {
           </div>
         }
       >
-        <AllPlayersDetails allPlayersData={allPlayersData}></AllPlayersDetails>
+        <AllPlayersDetails
+          coin={coin}
+          setCoin={setCoin}
+          allPlayersData={allPlayersData}
+        ></AllPlayersDetails>
       </Suspense>
     </div>
   );

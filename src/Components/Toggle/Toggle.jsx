@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SelectedPlayers from "../SelectedPlayers/SelectedPlayers";
 import AvailablePlayers from "./../AvailablePlayers/AvailablePlayers";
 
-const Toggle = () => {
+const Toggle = ({ coin, setCoin }) => {
   const [toggle, setToggle] = useState(true);
 
   return (
@@ -24,7 +24,7 @@ const Toggle = () => {
             onClick={() => {
               setToggle(false);
             }}
-             className={`border px-2 py-1 rounded font-semibold ${
+            className={`border px-2 py-1 rounded font-semibold ${
               toggle === false ? "bg-yellow-200" : ""
             }`}
           >
@@ -33,7 +33,7 @@ const Toggle = () => {
         </div>
       </div>
       {toggle === true ? (
-        <AvailablePlayers></AvailablePlayers>
+        <AvailablePlayers coin={coin} setCoin={setCoin}></AvailablePlayers>
       ) : (
         <SelectedPlayers></SelectedPlayers>
       )}

@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import AvailablePlayers from "./../AvailablePlayers/AvailablePlayers";
 
-const Player = ({ player }) => {
-  console.log(player);
+const Player = ({ player, coin, setCoin }) => {
+  // console.log(player);
+  const handleCoin = (playerPrice) => {
+    if (playerPrice > coin) {
+      alert("Not Enough Coin to Buy player");
+    }
+    const availablePrice = coin - playerPrice;
+    setCoin(availablePrice);
+  };
   const {
     playerImage,
     playerName,
@@ -12,6 +20,7 @@ const Player = ({ player }) => {
     price,
     rating,
   } = player;
+  const [isSelected, setIsSelected] = useState(false);
   return (
     <div className="card bg-base-100 shadow-sm p-2 border space-y-2 flex flex-col justify-between">
       <figure>
@@ -32,7 +41,16 @@ const Player = ({ player }) => {
           </div>
           <div className="flex justify-between">
             <p>Price:${price}</p>
-            <p>{battingStyle}</p>
+            <button
+              disabled={isSelected}
+              onClick={() => {
+                setIsSelected(true);
+                handleCoin(price);
+              }}
+              className="btn btn-primary px-2  rounded border"
+            >
+              {isSelected === true ? "Selected" : "Choose a Player"}
+            </button>
           </div>
         </div>
       </div>
